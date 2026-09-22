@@ -2,10 +2,14 @@
 
 Give a JSON payload a stable ID based only on its structure and value types, then diff that structure later.
 
+## Run from GitHub
+
 ```sh
-payload-shape-id id webhook.json --shape
-payload-shape-id diff yesterday.json today.json
+npx --yes github:b69ca/payload-shape-id id webhook.json --shape
+npx --yes github:b69ca/payload-shape-id diff yesterday.json today.json
 ```
+
+The package is not currently published to npm. Install it from GitHub with `npm install --global github:b69ca/payload-shape-id` if you prefer the shorter `payload-shape-id` command.
 
 Object keys are sorted, scalar values are discarded, and arrays retain the set of distinct item shapes. That makes IDs safe to put in logs without copying customer values, while still exposing field additions, removals, type changes, and new array variants. The ID is the first 16 hex characters of SHA-256 over the canonical shape.
 
